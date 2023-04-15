@@ -34,11 +34,16 @@ cmd_backend='local'
 if [ "${cmd_backend}" = local ]; then
 
     # The other usage
-    export train_cmd="run.pl"
+    # export train_cmd="run.pl"
     # Used for "*_train.py": "--gpu" is appended optionally by run.sh
-    export cuda_cmd="run.pl"
+    # export cuda_cmd="run.pl"
     # Used for "*_recog.py"
-    export decode_cmd="run.pl"
+    # export decode_cmd="run.pl"
+
+    export train_cmd="run.pl --max-jobs-run 2"
+    export decode_cmd="run.pl --max-jobs-run 2"
+    export cuda_cmd="run.pl --max-jobs-run 2"
+    export mkgraph_cmd="run.pl --max-jobs-run 2"
 
 # Local machine logging to stdout and log file, without any Job scheduling system
 elif [ "${cmd_backend}" = stdout ]; then
